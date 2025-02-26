@@ -1,0 +1,40 @@
+name: ML Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run Makefile
+        run: |
+          source venv/bin/activate
+          make all
+
+      - name: Save trained model
+        uses: actions/upload-artifact@v3
+        with:
+          name: trained-model
+          path: random_forest_model.pkl
+
