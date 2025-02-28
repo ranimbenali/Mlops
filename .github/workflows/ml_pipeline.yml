@@ -67,7 +67,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: 🔽 Télécharger le modèle entraîné
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: trained_model
 
@@ -90,7 +90,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: 🔽 Télécharger le modèle entraîné
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: trained_model
 
