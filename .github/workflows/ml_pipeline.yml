@@ -46,7 +46,7 @@ jobs:
         run: python main.py --train
 
       - name: 💾 Sauvegarder le modèle
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: trained_model
           path: random_forest_model.pkl
